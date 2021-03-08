@@ -20,3 +20,5 @@ query {
         - roles {treasurer: true|false}
     - `src/server/helpers.ts`
         - roles {treasurer: true|false}
+    - Add `src/server/entities/role.ts`
+    - `src/server/index.ts`
