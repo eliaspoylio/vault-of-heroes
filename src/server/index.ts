@@ -9,7 +9,6 @@ import { Hero } from './entities/hero';
 import { Skill } from './entities/skill';
 import { Attribute } from './entities/attribute';
 import { Vault } from './entities/vault';
-import { Role } from './entities/role';
 
 import { HeroResolver } from './resolvers/hero-resolver';
 import { VaultResolver } from './resolvers/vault-resolver';
@@ -22,7 +21,7 @@ useContainer(Container);
 const databaseOptions: ConnectionOptions = {
 	type: 'sqlite',
 	database: `${path.resolve(__dirname, '.')}/data/db.sqlite`,
-	entities: [Hero, Attribute, Skill, Vault, Role],
+	entities: [Hero, Attribute, Skill, Vault],
 	logging: false, // switch to 'all' or true to enable database query logging
 };
 

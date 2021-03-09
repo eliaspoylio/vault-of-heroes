@@ -1,7 +1,6 @@
 import { DeepPartial, getRepository } from 'typeorm';
 import { Hero } from './entities/hero';
 import { Vault } from './entities/vault';
-import { Role } from './entities/role';
 import { TElement } from './types/element';
 
 const PORCU: DeepPartial<Hero> = {
@@ -42,7 +41,7 @@ const PORCU: DeepPartial<Hero> = {
 				'Porcu spins right arm really fast as a decoy, then quickly punches with his left straight to the opponents face.',
 		},
 	],
-	roles: { treasurer: true },
+	roles: "TREASURER"
 };
 
 const LISA: DeepPartial<Hero> = {
@@ -87,7 +86,7 @@ const LISA: DeepPartial<Hero> = {
 			description: 'Shoots a quick shot, drawing her gun from a holster and putting it back.',
 		},
 	],
-	roles: { treasurer: false },
+	roles: "HERO"
 };
 
 const GIDEON: DeepPartial<Hero> = {
@@ -127,7 +126,7 @@ const GIDEON: DeepPartial<Hero> = {
 			description: 'Shoots a psychic beam.',
 		},
 	],
-	roles: { treasurer: false },
+	roles: "HERO"
 };
 
 export const seedDatabase = async () => {
