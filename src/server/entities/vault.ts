@@ -10,6 +10,7 @@ export class Vault {
 
 
   //☆.。.:*・°☆.。.:*・°☆.。.:*・°☆.。.:*
+	@Authorized("TREASURER")
 	@Field()
 	@Column()
 	treasures: string;

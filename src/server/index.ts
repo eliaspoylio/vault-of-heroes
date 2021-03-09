@@ -16,6 +16,8 @@ import { AuthTokenResolver } from './resolvers/auth-resolver';
 
 import { seedDatabase } from './helpers';
 
+import { authChecker } from "./auth/auth-checker";
+
 useContainer(Container);
 
 const databaseOptions: ConnectionOptions = {
@@ -36,6 +38,7 @@ const bootstrapApp = async () => {
 		const schema = await TypeGraphQl.buildSchema({
 			resolvers: [HeroResolver, VaultResolver, AuthTokenResolver],
 			container: Container,
+			authChecker,
 		});
 
 		const server = new ApolloServer({ schema });
