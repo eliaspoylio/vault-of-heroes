@@ -11,12 +11,13 @@ export const authChecker: AuthChecker<MyContext> = async ({ context }, roles, ) 
   //console.log(context.req)
 
   
-
+  /*
   if (roles.some(role => roles.includes(role))) {
-    console.log(context.hero.roles)
+    //console.log(context.hero.roles)
     return true;
   }
-
+  */
+ 
   // no roles matched, restrict access
   return false;
 };
