@@ -52,3 +52,16 @@ Error: Unable to infer GraphQL type from TypeScript reflection system. You need 
 	roles: string[];
 
 DataTypeNotSupportedError: Data type "Array" in "Hero.roles" is not supported by "sqlite" database.
+
+
+
+
+			authChecker: ({ context: {req} }) => {
+
+				if(req.session.user.id) {
+					return true
+				}
+
+				return false
+
+			}

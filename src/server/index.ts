@@ -17,6 +17,9 @@ import { AuthTokenResolver } from './resolvers/auth-resolver';
 import { seedDatabase } from './helpers';
 
 import { authChecker } from "./auth/auth-checker";
+import { MyContext } from "./auth/myContext.interface";
+
+
 
 useContainer(Container);
 
@@ -24,7 +27,7 @@ const databaseOptions: ConnectionOptions = {
 	type: 'sqlite',
 	database: `${path.resolve(__dirname, '.')}/data/db.sqlite`,
 	entities: [Hero, Attribute, Skill, Vault],
-	logging: false, // switch to 'all' or true to enable database query logging
+	logging: true, // switch to 'all' or true to enable database query logging
 };
 
 const DROP_DATABASE = true;
@@ -38,10 +41,17 @@ const bootstrapApp = async () => {
 		const schema = await TypeGraphQl.buildSchema({
 			resolvers: [HeroResolver, VaultResolver, AuthTokenResolver],
 			container: Container,
-			authChecker,
+			authChecker
 		});
 
-		const server = new ApolloServer({ schema });
+		const server = new ApolloServer({ schema, 
+			context: ({ req }: MyContext): MyContext => {
+				return {
+					req,
+					hero: null 
+				}
+			}
+		});
 
 		const { url } = await server.listen(4000);
 		console.log(`Server is running, GraphQL Playground available at ${url}`);
